@@ -1,6 +1,8 @@
 package com.SpringSecurity.JwtTokenDemo.controller;
 
+import com.SpringSecurity.JwtTokenDemo.dto.JwtAuthenticationResponse;
 import com.SpringSecurity.JwtTokenDemo.dto.SignUpRequest;
+import com.SpringSecurity.JwtTokenDemo.dto.SigninRequest;
 import com.SpringSecurity.JwtTokenDemo.entity.User;
 import com.SpringSecurity.JwtTokenDemo.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
@@ -20,5 +22,10 @@ public class AuthenticationController {
     @PostMapping("/signup")
     public ResponseEntity<User> signUp(@RequestBody SignUpRequest signUpRequest){
         return ResponseEntity.ok(authenticationService.signUp(signUpRequest));
+    }
+
+    @PostMapping("/signin")
+    public ResponseEntity<JwtAuthenticationResponse> signin(@RequestBody SigninRequest signinRequest){
+        return ResponseEntity.ok(authenticationService.signin(signinRequest));
     }
 }
